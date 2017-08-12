@@ -8,5 +8,5 @@ PCrest2$DateTime <- strptime(paste(PCrest2$Date, PCrest2$Time), "%d/%m/%Y/%H:%M:
 PCrest2$DateTime <- as.POSIXct(paste(PCrest2$Date, PCrest2$Time))
 #graph2
 png(filename = "rplot2.png", width = 504, height = 504)
-plot (PCTIME2$DateTime, PCTIME2$Global_active_power, ylab = "Global Active Power (Kilowatts)", xlab = "")
+plot (x = PCrest2$DateTime, y = PCrest2$Global_active_power, type = "l", ylab = "Global ACtive Power (kilowatts)", xlab = "")
 dev.off()
