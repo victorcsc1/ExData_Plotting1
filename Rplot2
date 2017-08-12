@@ -1,0 +1,12 @@
+##2nd Graph
+setwd("~/exploratory data analysis")
+library(dplyr)
+PCOMP2 <- read.table("household_power_consumption.txt", header= TRUE, sep = ';', na.strings= "?")
+PCOMP2$Date <- as.Date(PCOMP2$Date,"%d/%m/%Y" )
+PCrest2 <- filter(PCOMP2, Date =="2007-02-01" | Date == "2007-02-02")
+PCrest2$DateTime <- strptime(paste(PCrest2$Date, PCrest2$Time), "%d/%m/%Y/%H:%M:%S")
+PCrest2$DateTime <- as.POSIXct(paste(PCrest2$Date, PCrest2$Time))
+#graph2
+png(filename = "rplot2.png", width = 504, height = 504)
+plot (PCTIME2$DateTime, PCTIME2$Global_active_power, ylab = "Global Active Power (Kilowatts)", xlab = "")
+dev.off()
