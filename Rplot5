@@ -6,7 +6,7 @@ PCOMP$Date <- as.Date(PCOMP$Date,"%d/%m/%Y")
 PCrest <- filter(PCOMP, Date =="2007-02-01" | Date == "2007-02-02")
 PCrest$DateTime <- strptime(paste(PCrest$Date, PCrest$Time), "%d/%m/%Y/%H:%M:%S")
 PCrest$DateTime <- as.POSIXct(paste(PCrest$Date, PCrest$Time))
-#graph plus raph1,2,3,4 (2,2)
+#graph plus graph1,2,3,4 (2,2)
 
 
 png(filename = "Rplot5.png", width = 504, height = 504)
