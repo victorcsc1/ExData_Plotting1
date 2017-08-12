@@ -1,0 +1,21 @@
+##4nd Graph 
+setwd("~/exploratory data analysis")
+library((lattice/grDevices/graphics/png/plyr/ggplot2/dplyr)
+PCOMP <- read.table("household_power_consumption.txt", header= TRUE, sep = ';', na.strings= "?")
+PCOMP$Date <- as.Date(PCOMP$Date,"%d/%m/%Y")
+PCrest <- filter(PCOMP, Date =="2007-02-01" | Date == "2007-02-02")
+PCrest$DateTime <- strptime(paste(PCrest$Date, PCrest$Time), "%d/%m/%Y/%H:%M:%S")
+PCrest$DateTime <- as.POSIXct(paste(PCrest$Date, PCrest$Time))
+#graph plus raph1,2,3,4 (2,2)
+
+
+png(filename = "Rplot5.png", width = 504, height = 504)
+par(mfrow = c(2, 2))
+plot(PCrest$DateTime, PCrest$Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", type = "l")
+plot(PCrest$DateTime, PCrest$Voltage, type ="l", ylab = "Global Active Power", xlab ="")
+plot(PCrest$DateTime, PCrest$Sub_metering_1, ylab = "energy sub metering", xlab = "", type = "l")
+> lines(PCrest$DateTime, PCrest$Sub_metering_2, col = "red")
+> lines(PCrest$DateTime, PCrest$Sub_metering_3, col = "blue")
+legend('topright', col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lwd = 1)
+plot(PCrest$DateTime, PCrest$Global_reactive_power, type = "l")
+dev.off()
