@@ -8,10 +8,10 @@
  #FILE
  #PLOT
   setwd("~/exploratory data analysis")
- PCOMP1 <- read.table("household_power_consumption.txt", header= TRUE, sep = ';', na.strings= "?")
- PCOMP1$Date <- as.Date(PCOMP1$Date,"%d/%m/%Y" )
- PCTIME1 <- filter(PCOMP1, Date =="2007-02-01" | Date == "2007-02-02")
- PCTIME1<- strptime(PCTIME1$datetime, format = "%d/%m/%Y/%H:%M:%S")
- hist(PCTIME1$Global_active_power, main= "Global Active Power", xlab= "Global Active Power(Kilowatt)", col= "red")
+ PCOMP <- read.table("household_power_consumption.txt", header= TRUE, sep = ';', na.strings= "?")
+ PCOMP$Date <- as.Date(PCOMP$Date,"%d/%m/%Y" )
+ PCrest <- filter(PCOMP, Date =="2007-02-01" | Date == "2007-02-02")
+ PCrest$DateTime<- strptime(PCrest$datetime, format = "%d/%m/%Y/%H:%M:%S")
+ hist(PCrest$Global_active_power, main= "Global Active Power", xlab= "Global Active Power(Kilowatt)", col= "red")
  dev.copy(png, file="Plot1.png")
                                 
